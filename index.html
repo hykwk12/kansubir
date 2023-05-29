@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>강 수현 생일 축하해용</title>
+
+    <style>
+        body {
+            background-image: url("https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/free_photos/background.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .media-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .media {
+            margin: 10px;
+            cursor: pointer;
+            max-width: 800px;
+        }
+
+        .description {
+            display: none;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* 추가된 부분 */
+        header {
+            height: 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: pink;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 추가된 부분 */
+        h1 {
+            line-height: 50px;
+            color: purple;
+            font-family: 'Myeongjo', serif;
+        }
+
+        /* 추가된 부분 */
+        .heart::before {
+            content: "♥";
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <header style="height: 50px;">
+        <h1 class="heart">강 수현 생일 축하해용</h1>
+    </header>
+
+    <div class="media-container">
+        <img class="media" src="https://gi.esmplus.com/hykwk12/%EA%B0%80%EC%A1%B1%EC%82%AC%EC%A7%84/KakaoTalk_20230528_182143551_08.jpg"
+            alt="이미지 1" data-description="종로의 한국사찰음식 산채에서">
+        <img class="media" src="https://gi.esmplus.com/hykwk12/%EA%B0%80%EC%A1%B1%EC%82%AC%EC%A7%84/KakaoTalk_20230528_182143551_13.jpg"
+            alt="이미지 2" data-description="맛있게 먹었어요">
+        <img class="media" src="https://gi.esmplus.com/hykwk12/%EA%B0%80%EC%A1%B1%EC%82%AC%EC%A7%84/KakaoTalk_20230528_182143551_18.jpg"
+            alt="이미지 3" data-description="북창동 카페에서 맛있는 케익도 먹고">
+        <img class="media" src="https://gi.esmplus.com/hykwk12/%EA%B0%80%EC%A1%B1%EC%82%AC%EC%A7%84/birth.jpg"
+            alt="이미지 4" data-description="경북
+%AC%EC%A7%84/birth.jpg" alt="이미지 4" data-description="경북궁근처 공원도 산챗했어요">
+        <div class="media">
+            <div id="player"></div>
+        </div>
+    </div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+<script>
+    let player;
+
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            height: '360',
+            width: '640',
+            videoId: '-5IpW9rcqUw',
+        });
+    }
+
+    const mediaElements = document.querySelectorAll('.media');
+    mediaElements.forEach((media) => {
+        media.addEventListener('click', () => {
+            const description = media.dataset.description;
+            showDescription(description);
+            if (media === document.querySelector('.media iframe')) {
+                playVideo();
+            }
+        });
+    });
+
+    function showDescription(description) {
+        const descriptionElement = document.createElement('div');
+        descriptionElement.classList.add('description');
+        descriptionElement.textContent = description;
+
+        const mediaContainer = document.querySelector('.media-container');
+        mediaContainer.appendChild(descriptionElement);
+    }
+
+    function playVideo() {
+        player.playVideo();
+    }
+</script>
